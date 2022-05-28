@@ -10,7 +10,9 @@ class MyMainForm(QtWidgets.QMainWindow):
         self.showMaximized()
         self.__ui.action_14.triggered.connect(self.sh_w)
         self.__ui.action_15.triggered.connect(self.lon_w)
+        self.__ui.action_18.triggered.connect(self.Exam)
         self.__ui.action_16.triggered.connect(self.Start)
+        self.__ui.action_20.triggered.connect(self.signs_of_pripen)
         self.__ui.lineEditEnterText.textChanged.connect(self.onEnterText)
         self.dict=['']
         self.timerSec = QtCore.QTimer()
@@ -21,6 +23,7 @@ class MyMainForm(QtWidgets.QMainWindow):
         self.__ui.lineEditOutputText.setText('')
         self.__ui.lineEditEnterText.setText('')
         self.onEnterText('')
+        self.timerSec.start(1000)
 
     def keyPressEvent(self, event):
         if event.key() == QtCore.Qt.Key_Q:
@@ -30,7 +33,7 @@ class MyMainForm(QtWidgets.QMainWindow):
     def onEnterText(self, newText):
          #self.__ui.lineEditOutputText.setText(newText)
          if self.__ui.lineEditEnterText.text() == self.__ui.lineEditOutputText.text():
-             print('y')
+             #print('y')
              idx = random.randrange(0, len(self.dict))
              self.__ui.lineEditOutputText.setText(self.dict[idx])
              del self.dict[idx]
@@ -42,17 +45,39 @@ class MyMainForm(QtWidgets.QMainWindow):
 
 
     def lon_w(self):
-        self.dict=["Клавиатура","Мышка","Облако","Солнце","Компьютер"]
+        self.dict=["Клавиатура","Мышка","Облако","Солнце","Рапира","Расправа","Радар","Рапорт","Разрыв","Разбор","Размер","Разгром","Растирание"
+                   "Ротатор","Радиатор","Разработка","Рубероид","Разоружение","Разнообразие","Равноправие","Разодрать","Раздробить"]
 
     def onTimer(self):
         self.__ui.lineEdit_2.setText(str(self.secValue))
         self.secValue-=1
         if self.secValue ==-1:
             self.timerSec.stop()
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setIcon(QtWidgets.QMessageBox.Information)
+            msgBox.setText("Время вышло. Попробовать снова?")
+            msgBox.setWindowTitle("Время вышло")
+            msgBox.setStandardButtons(QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
+
+            returnValue = msgBox.exec()
+            if returnValue == QtWidgets.QMessageBox.Yes:
+                self.reset()
+            else:
+                self.__menuForm.setVisible(True)
+                self.close()
 
     def reset(self):
         self.secValue = 60
-        self.timerSec.start(1000)
+        #self.timerSec.start(1000)
+
+    def Exam(self):
+        self.dict = ["Год","Дон","Облако","Солнце","Компьютер", "Золото", "Медведь", "Гараж", "Закон", "Город", "Банан", "Туман",
+                     "Клавиатура","Мышка","Облако","Солнце","Рапира","Расправа","Радар","Рапорт","Разрыв","Разбор","Размер","Разгром","Растирание",
+                     "Ротатор", "Радиатор", "Разработка", "Рубероид", "Разоружение", "Разнообразие", "Равноправие",
+                     "Разодрать", "Раздробить"]
+
+    def signs_of_pripen(self):
+        self.dict = [",,,",",,,...","..",".,","..,,", "я,", "ты,", "он,", "она."]
 
 
 
