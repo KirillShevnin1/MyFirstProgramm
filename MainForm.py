@@ -24,7 +24,7 @@ class MyMainForm(QtWidgets.QMainWindow):
         self.__ui.lineEditOutputText.setText('')
         self.__ui.lineEditEnterText.setText('')
         self.onEnterText('')
-        self.secValue = 3
+        self.secValue = 80
         self.timerSec.start(1000)
 
     def keyPressEvent(self, event):
