@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'MyMainForm.ui'
+# Form implementation generated from reading ui file 'MyMainForm.py'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -175,4 +175,3 @@ class Ui_MainWindow(object):
         self.action_23.setText(_translate("MainWindow", "Тренировка цифр и символов"))
         self.action_24.setText(_translate("MainWindow", "Тренировка с предложениями "))
         self.action_25.setText(_translate("MainWindow", "Полный экзамен"))
-import resources_rc
