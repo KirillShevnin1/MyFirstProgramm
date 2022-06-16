@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'MyMainForm.py'
+# Form implementation generated from reading ui file 'MyMainForm.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -70,8 +70,6 @@ class Ui_MainWindow(object):
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1005, 26))
         self.menubar.setObjectName("menubar")
-        self.menu_4 = QtWidgets.QMenu(self.menubar)
-        self.menu_4.setObjectName("menu_4")
         self.menu_2 = QtWidgets.QMenu(self.menubar)
         self.menu_2.setObjectName("menu_2")
         self.menu_3 = QtWidgets.QMenu(self.menu_2)
@@ -140,7 +138,6 @@ class Ui_MainWindow(object):
         self.menu_2.addAction(self.action_16)
         self.menu_2.addAction(self.menu_3.menuAction())
         self.menubar.addAction(self.menu_2.menuAction())
-        self.menubar.addAction(self.menu_4.menuAction())
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -148,7 +145,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Моё приложение "))
-        self.menu_4.setTitle(_translate("MainWindow", "Прогресс"))
         self.menu_2.setTitle(_translate("MainWindow", "Новая игра"))
         self.menu_3.setTitle(_translate("MainWindow", "Режимы "))
         self.menu_7.setTitle(_translate("MainWindow", "Тренировка слов"))
@@ -175,3 +171,4 @@ class Ui_MainWindow(object):
         self.action_23.setText(_translate("MainWindow", "Тренировка цифр и символов"))
         self.action_24.setText(_translate("MainWindow", "Тренировка с предложениями "))
         self.action_25.setText(_translate("MainWindow", "Полный экзамен"))
+import resources_rc
