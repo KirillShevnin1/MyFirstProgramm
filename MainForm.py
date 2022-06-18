@@ -21,16 +21,26 @@ class MyMainForm(QtWidgets.QMainWindow):
         self.timerSec.timeout.connect(self.onTimer)
         self.__ui.lineEditOutputText.setReadOnly(True)
         self.__ui.lineEditEnterText.setReadOnly(True)
+        self.msgChoose = QtWidgets.QMessageBox()
 
     def Start(self):
-        self.__ui.lineEditOutputText.setText('')
-        self.__ui.lineEditEnterText.setText('')
-        self.onEnterText('')
-        self.allSymbols = 0
-        self.allTrueSymbols = 0
-        self.secValue = 5
-        self.timerSec.start(1000)
-        self.__ui.lineEditEnterText.setReadOnly(False)
+        if self.dict != ['']:
+            self.__ui.lineEditOutputText.setText('')
+            self.__ui.lineEditEnterText.setText('')
+            self.onEnterText('')
+            self.allSymbols = 0
+            self.allTrueSymbols = 0
+            self.secValue = 80
+            self.timerSec.start(1000)
+            self.__ui.lineEditEnterText.setReadOnly(False)
+        else:
+            self.msgChoose.setIcon(QtWidgets.QMessageBox.Information)
+            self.msgChoose.setText("Чтоб ")
+            self.msgChoose.setWindowTitle("Режим не выбран")
+            self.msgChoose.show()
+
+
+
 
     def keyPressEvent(self, event):
         if event.key() == QtCore.Qt.Key_Q:

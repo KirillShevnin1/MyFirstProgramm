@@ -62,6 +62,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(14)
         self.lineEdit_2.setFont(font)
+        self.lineEdit_2.setReadOnly(True)
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.horizontalLayout.addWidget(self.lineEdit_2)
         self.horizontalLayout_2.addLayout(self.horizontalLayout)
