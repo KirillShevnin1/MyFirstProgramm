@@ -12,6 +12,7 @@ class MyMainForm(QtWidgets.QMainWindow):
         self.__ui.action_15.triggered.connect(self.lon_w)
         self.__ui.action_18.triggered.connect(self.Exam)
         self.__ui.action_16.triggered.connect(self.Start)
+        self.__ui.pushButton.clicked.connect(self.endgame)
         self.__ui.action_20.triggered.connect(self.signs_of_pripen)
         self.__ui.lineEditEnterText.textChanged.connect(self.onEnterText)
         self.dict=['']
@@ -33,9 +34,11 @@ class MyMainForm(QtWidgets.QMainWindow):
             self.secValue = 80
             self.timerSec.start(1000)
             self.__ui.lineEditEnterText.setReadOnly(False)
+            self.__ui.pushButton.setVisible(True)
+            self.__ui.lineEditEnterText.setReadOnly(False)
         else:
             self.msgChoose.setIcon(QtWidgets.QMessageBox.Information)
-            self.msgChoose.setText("Чтоб ")
+            self.msgChoose.setText("Чтоб начать тренировку выберите режим ")
             self.msgChoose.setWindowTitle("Режим не выбран")
             self.msgChoose.show()
 
@@ -89,7 +92,8 @@ class MyMainForm(QtWidgets.QMainWindow):
             msgBox.setIcon(QtWidgets.QMessageBox.Information)
             msgBox.setText("Натыкано правильных знаков: " + str(self.allTrueSymbols) + "\n" +
                            f"Натыкано не правильных знаков: {self.allSymbols - self.allTrueSymbols}\n")
-            msgBox.setWindowTitle("Время вышло")
+            msgBox.setWindowTitle("Конец тренировки")
+            self.__ui.lineEditEnterText.setReadOnly(True)
             msgBox.setStandardButtons(QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
 
             returnValue = msgBox.exec()
@@ -113,6 +117,11 @@ class MyMainForm(QtWidgets.QMainWindow):
     def signs_of_pripen(self):
         self.dict = [",,,",",,,...","..",".,","..,,", "я,", "ты,", "он,", "она.", "А.С. Пушкин и др,.", "и","пр.,","Сон,","бал,","Файл,","зуб и т. п.,", "и т.","в.","т.",
                      ",,;,;",";,;,;","а,","б;","в,","Г;",",;,;,",";,,;","да,","Ага;","моря;"]
+
+    def endgame(self):
+        self.secValue = 0
+
+
 
 
 
