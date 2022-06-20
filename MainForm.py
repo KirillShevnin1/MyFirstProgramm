@@ -31,7 +31,7 @@ class MyMainForm(QtWidgets.QMainWindow):
             self.onEnterText('')
             self.allSymbols = 0
             self.allTrueSymbols = 0
-            self.secValue = 80
+            self.secValue = 10
             self.timerSec.start(1000)
             self.__ui.lineEditEnterText.setReadOnly(False)
             self.__ui.pushButton.setVisible(True)
@@ -95,7 +95,7 @@ class MyMainForm(QtWidgets.QMainWindow):
             msgBox.setWindowTitle("Конец тренировки")
             self.__ui.lineEditEnterText.setReadOnly(True)
             self.__ui.pushButton.setVisible(False)
-            self.dict = ['']
+            #self.dict = ['']
             msgBox.setStandardButtons(QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
 
             returnValue = msgBox.exec()
