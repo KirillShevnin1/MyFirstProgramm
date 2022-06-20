@@ -149,7 +149,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Моё приложение "))
         self.pushButton.setText(_translate("MainWindow", "Завершить тренировку"))
-        self.pushButton.setVision(False)
+        self.pushButton.setVisible(False)
         self.menu_2.setTitle(_translate("MainWindow", "Новая игра"))
         self.menu_3.setTitle(_translate("MainWindow", "Режимы "))
         self.menu_7.setTitle(_translate("MainWindow", "Тренировка слов"))

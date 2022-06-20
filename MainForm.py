@@ -91,9 +91,11 @@ class MyMainForm(QtWidgets.QMainWindow):
             msgBox = QtWidgets.QMessageBox()
             msgBox.setIcon(QtWidgets.QMessageBox.Information)
             msgBox.setText("Натыкано правильных знаков: " + str(self.allTrueSymbols) + "\n" +
-                           f"Натыкано не правильных знаков: {self.allSymbols - self.allTrueSymbols}\n")
+                           f"Натыкано не правильных знаков: {self.allSymbols - self.allTrueSymbols}\n" + "Продолжить тренировку?")
             msgBox.setWindowTitle("Конец тренировки")
             self.__ui.lineEditEnterText.setReadOnly(True)
+            self.__ui.pushButton.setVisible(False)
+            self.dict = ['']
             msgBox.setStandardButtons(QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
 
             returnValue = msgBox.exec()
