@@ -16,6 +16,7 @@ class MyMainForm(QtWidgets.QMainWindow):
         self.__ui.action_20.triggered.connect(self.signs_of_pripen)
         self.__ui.lineEditEnterText.textChanged.connect(self.onEnterText)
         self.dict=['']
+        self.lastTime = 0
         self.allSymbols = 0
         self.allTrueSymbols = 0
         self.timerSec = QtCore.QTimer()
@@ -84,8 +85,11 @@ class MyMainForm(QtWidgets.QMainWindow):
                    "разнообразие","равноправие","разодрать","раздробить"]
 
     def onTimer(self):
+        #if self.lastTime == 0:
         self.__ui.lineEdit_2.setText(str(self.secValue))
         self.secValue -= 1
+        #else:
+        #self.secValue = self.lastTime
         if self.secValue == -1:
             self.timerSec.stop()
             msgBox = QtWidgets.QMessageBox()
@@ -95,13 +99,13 @@ class MyMainForm(QtWidgets.QMainWindow):
             msgBox.setWindowTitle("Конец тренировки")
             self.__ui.lineEditEnterText.setReadOnly(True)
             self.__ui.pushButton.setVisible(False)
-            #self.dict = ['']
             msgBox.setStandardButtons(QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
 
             returnValue = msgBox.exec()
             if returnValue == QtWidgets.QMessageBox.Yes:
                 self.reset()
             else:
+                self.dict = ['']
                 self.__ui.lineEditEnterText.setText("")
                 self.__ui.lineEditOutputText.setText("")
 
@@ -121,6 +125,7 @@ class MyMainForm(QtWidgets.QMainWindow):
                      ",,;,;",";,;,;","а,","б;","в,","Г;",",;,;,",";,,;","да,","Ага;","моря;"]
 
     def endgame(self):
+        self.lastTime = self.secValue
         self.secValue = 0
 
 
