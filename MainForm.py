@@ -32,7 +32,11 @@ class MyMainForm(QtWidgets.QMainWindow):
             self.onEnterText('')
             self.allSymbols = 0
             self.allTrueSymbols = 0
-            self.secValue = 10
+
+            if self.lastTime != 0:
+                self.secValue = self.lastTime
+            else:
+                self.secValue = 10
             self.timerSec.start(1000)
             self.__ui.lineEditEnterText.setReadOnly(False)
             self.__ui.pushButton.setVisible(True)
@@ -85,7 +89,6 @@ class MyMainForm(QtWidgets.QMainWindow):
                    "разнообразие","равноправие","разодрать","раздробить"]
 
     def onTimer(self):
-        #if self.lastTime == 0:
         self.__ui.lineEdit_2.setText(str(self.secValue))
         self.secValue -= 1
         #else:
